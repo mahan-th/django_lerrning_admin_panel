@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+
+    <style>
+        .body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(247, 247, 247);
+            color: rgb(50, 50, 50);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+
+        }
+        header {
+            width: 100%;
+
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+
+        #nav1 {
+
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background-color: rgb(0, 57, 107);
+            box-sizing: border-box;
+            background-color: rgb(0, 0, 0);
+            color: rgb(75, 140, 215);
+            display: flex;
+            align-items: center;
+            justify-content: center;   
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            &:hover {
+                background-color:  rgb(47, 104, 169);
+                color: rgb(0, 0, 0);
+            }
+            &:active {
+                background-color: rgb(16, 55, 95);
+                color: rgb(180, 180, 180);
+            }
+            &:focus {
+                outline: 2px solid rgb(74, 88, 100);
+                outline-offset: 2px;
+            }
+            size: 24px;
+            &:focus-visible {
+                outline: 2px solid rgb(74, 88, 100);
+                outline-offset: 2px;
+            }
+            &:focus-within {
+                border-color: rgb(74, 88, 100);
+            }
+        }
+
+
+        main {
+            width: 100%;
+            padding: 20px;
+            max-width: 1200px;
+        }
+
+        .product {
+            background-color: rgb(201, 201, 201);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+            cursor: pointer;
+
+        }
+
+        .product h4 {
+            margin-top: 0;
+        }
+        #product-list {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #serch-boks {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 800px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgb(240, 240, 240);
+            border-radius: 18px;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            color: rgb(50, 50, 50);
+            border: 1px solid rgb(200, 200, 200);
+            transition: border-color 0.3s ease;
+            &:focus-within {
+                border-color: rgb(74, 88, 100);
+        
+                    }        
+            input, textarea {
+                width: 95%;
+                padding: 10px;
+                border: 1px solid rgb(200, 200, 200);
+                border-radius: 4px;
+                font-size: 16px;
+                color: rgb(50, 50, 50);
+                transition: border-color 0.3s ease;
+                &:focus {
+                    border-color: rgb(74, 88, 100);
+                    outline: none;
+                }
+            }
+            button {
+                padding: 10px 20px;
+                background-color: black;
+                color: rgb(47, 104, 169);
+                border: none;
+                border-radius: 4px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+        
+                &:hover {
+                    background-color: rgb(47,104 ,169);
+                    color: rgb(0,0 ,0);
+                }
+            }
+        }
+
+    </style>
+    <header class="header">
+        <nav id="nav1">
+            <h1>Product List</h1>
+
+        </nav>
+        
+    </header>
+    
+
+
+</head>
+<body class="body">
+
+
+
+    <main class="main">
+        <br>
+        <form id="serch-boks" class="search-boks">
+            <input type="text" name="q" placeholder="product name">
+            <button type="submit">Ok</button>
+        </form>
+        <br><br>
+
+        {% for product in products %}
+            <div class="product">
+                <h3 style="color: rgb(0, 0, 0);">{{ product.name }}</h3>
+                <p>description :{{ product.description }}</p>
+                <p>time : {{ product.created_at }}</p>
+                <h4>Price : ${{ product.price }}</h4>
+                
+            </div>
+        {% endfor %}
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>

@@ -1,0 +1,406 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <title>admin panel</title>
+
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(247, 247, 247);
+    color: rgb(50, 50, 50);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+
+
+
+}
+
+#nav1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: rgb(0, 57, 107);
+    box-sizing: border-box;
+    background-color: rgb(0, 0, 0);
+    color: rgb(75, 140, 215);
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    &:hover {
+        background-color:  rgb(47, 104, 169);
+        color: rgb(0, 0, 0);
+    }
+    &:active {
+        background-color: rgb(16, 55, 95);
+        color: rgb(180, 180, 180);
+    }
+    &:focus {
+        outline: 2px solid rgb(74, 88, 100);
+        outline-offset: 2px;
+    }
+    size: 24px;
+    &:focus-visible {
+        outline: 2px solid rgb(74, 88, 100);
+        outline-offset: 2px;
+    }
+    &:focus-within {
+        border-color: rgb(74, 88, 100);
+    }
+}
+
+#h1-p {
+
+    right: -30%;
+    font-size: xx-large;
+    font-family: Arial, sans-serif;;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(245, 245, 245);
+    color: rgb(0, 0 ,0);
+    &:hover {
+        color:rgb(47, 104, 169);
+    }
+}
+.add-product {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 800px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(240, 240, 240);
+    border-radius: 18px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: rgb(50, 50, 50);
+    border: 1px solid rgb(200, 200, 200);
+    transition: border-color 0.3s ease;
+    &:focus-within {
+        border-color: rgb(74, 88, 100);
+ 
+   }
+   input, textarea {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid rgb(200, 200, 200);
+        border-radius: 4px;
+        font-size: 16px;
+        color: rgb(50, 50, 50);
+        transition: border-color 0.3s ease;
+        &:focus {
+            border-color: rgb(74, 88, 100);
+            outline: none;
+        }
+    }
+    button {
+        padding: 10px 20px;
+        background-color: black;
+        color: rgb(47, 104, 169);
+        border: none;
+        border-radius: 4px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    
+        &:hover {
+        background-color:  rgb(47, 104, 169);
+        color: rgb(0, 0, 0);
+    }
+}      
+} 
+
+#h1-u {
+    right: -30%;
+    font-size: x-large;
+    font-family: Arial, sans-serif;;
+    top: 20px;
+    width: 200px;
+    height: 20px;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(245, 245, 245);
+    color: rgb(0, 0 ,0);
+    &:hover {
+        color:rgb(47, 104, 169);
+    }
+
+}
+.update-product {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 800px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(240, 240, 240);
+    border-radius: 18px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: rgb(50, 50, 50);
+    border: 1px solid rgb(200, 200, 200);
+    transition: border-color 0.3s ease;
+    &:focus-within {
+        border-color: rgb(74, 88, 100);
+ 
+   }
+   input, textarea {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid rgb(200, 200, 200);
+        border-radius: 4px;
+        font-size: 16px;
+        color: rgb(50, 50, 50);
+        transition: border-color 0.3s ease;
+        &:focus {
+            border-color: rgb(74, 88, 100);
+            outline: none;
+        }
+    }
+    button {
+        padding: 10px 20px;
+        background-color: black;
+        color: rgb(47, 104, 169);
+        border: none;
+        border-radius: 4px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    
+        &:hover {
+        background-color:  rgb(47, 104, 169);
+        color: rgb(0, 0, 0);
+    }
+}      
+
+}
+
+#h3-show {
+    right: -30%;
+  
+
+    width: 200px;
+  
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(245, 245, 245);
+    color: rgb(0, 0 ,0);
+    &:hover {
+        color:rgb(47, 104, 169);
+    }
+
+}
+.show-product {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 800px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(240, 240, 240);
+    border-radius: 18px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: rgb(50, 50, 50);
+    border: 1px solid rgb(200, 200, 200);
+    transition: border-color 0.3s ease;
+    &:focus-within {
+        border-color: rgb(74, 88, 100);
+
+    }
+    input, textarea {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid rgb(200, 200, 200);
+        border-radius: 4px;
+        font-size: 16px;
+        color: rgb(50, 50, 50);
+        transition: border-color 0.3s ease;
+        &:focus {
+            border-color: rgb(74, 88, 100);
+            outline: none;
+        }
+    }
+    button {
+        padding: 10px 20px;
+        background-color: black;
+        color: rgb(47, 104, 169);
+        border: none;
+        border-radius: 4px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color:  rgb(47, 104, 169);
+            color: rgb(0, 0, 0);
+        }
+    }
+}
+#delete-product {
+    right: -30%;
+    font-size: x-large;
+    font-family: Arial, sans-serif;;
+    top: 20px;
+    width: 200px;
+    height: 20px;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(245, 245, 245);
+    color: rgb(0, 0 ,0);
+    &:hover {
+        color:rgb(47, 104, 169);
+    }
+}
+.delete-product {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 800px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(240, 240, 240);
+    border-radius: 18px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: rgb(50, 50, 50);
+    border: 1px solid rgb(200, 200, 200);
+    transition: border-color 0.3s ease;
+    &:focus-within {
+        border-color: rgb(74, 88, 100);
+
+   }
+   input, textarea {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid rgb(200, 200, 200);
+        border-radius: 4px;
+        font-size: 16px;
+        color: rgb(50, 50, 50);
+        transition: border-color 0.3s ease;
+        &:focus {
+            border-color: rgb(74, 88, 100);
+            outline: none;
+        }
+    }
+    button {
+        padding: 10px 20px;
+        background-color: black;
+        color: rgb(47, 104, 169);
+        border: none;
+        border-radius: 4px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: rgb(47,104 ,169);
+            color: rgb(0,0 ,0);
+        }
+    }
+}
+
+    </style>
+
+</head>
+
+<body class="body1">
+    <header id="header1">
+        <nav id="nav1">
+            <h1 id="h1-1">ADMIN PANEL</h1>
+        </nav>
+    </header>
+    <br><br><br><br>
+    <br>
+    <header>
+        
+    </header>
+
+    <main class="main1">
+        <label for="input1">
+            <h1 id="h1-p" for="input1">Add Product</h1>
+        </label>
+        
+        <form action="" class="add-product">
+            <input type="text" placeholder="Product Name" id="input1">
+            <input type="number" placeholder="Product Price">
+            <input type="text" placeholder="Product Description">
+            <button type="submit">Add Product</button>
+
+        </form> 
+        <label for="input2">
+            <h1 id="h1-u">Update Product:</h1>
+        </label>
+        
+        <form action="" class="update-product">
+            <input type="text" placeholder="Product id" id="input2">
+            <button type="submit">Edit Product</button>
+
+        </form>
+        <hr>
+
+        
+
+        
+        <h2 id="h3-show">Show Products:</h2>
+        <form class="show-product"  target="_self" action="{% url 'show_products' %}" method="get" id="show_products">
+            
+            <button type="submit">show Product List</button>
+            <br>
+        </form>
+        
+
+
+
+        <hr id="hr4">
+        <label for="input3">
+            <h1 id="delete-product">Delete Product :</h1>
+        </label>
+        
+        <form action="" class="delete-product">
+            <label for="input3"></label>
+            <input type="text" placeholder="Product the id to Delete" id="input3">
+            <br>
+            <button type="submit">Delete Product</button>
+        </form>
+
+    </main>
+    <footer></footer>
+    
+</body>
+</html>
+
